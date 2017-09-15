@@ -2,13 +2,12 @@
 
 #SBATCH --partition		exacloud
 #SBATCH --nodes			1
-#SBATCH --ntasks		20
+#SBATCH --ntasks		1
 #SBATCH --ntasks-per-core	1
 #SBATCH --cpus-per-task		1
-#SBATCH --mem-per-cpu		4000
-#SBATCH --output		gliph-%A.%a.out
-#SBATCH --error			gliph-%A.%a.err
-#SBATCH --array			1-9
+#SBATCH --mem-per-cpu		16000
+#SBATCH --output		gliph-%j.out
+#SBATCH --error			gliph-%j.err
 
 IN=$data/gliph/clones
 OUT=$data/gliph/results
