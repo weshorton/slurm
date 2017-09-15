@@ -16,11 +16,11 @@ LOG=$log/gliph/run
 TODO=$data/gliph/todo/gliphToDo.txt
 
 ### Get specific file to run
-CURRFILE=`awk -v line=$SLURM_ARRAY_TASK_ID '{if (NR == line) print $0}' $TODO`
+CURRFILE=`awk -v line=1 '{if (NR == line) print $0}' $TODO`
 
 echo "SLURM_JOBID: " $SLURM_JOBID
-echo "SLURM_ARRAY_TASK_ID: " $SLURM_ARRAY_TASK_ID
-echo "SLURM_ARRAY_JOB_ID: " $SLURM_ARRAY_JOB_ID
+echo "SLURM_JOB_NODELIST: " $SLURM_JOB_NODELIST
+echo "SLURM_CPUS_ON_NODE: " $SLURM_CPUS_ON_NODE
 echo "Current file: " $CURRFILE
 
 gliph-group-discovery.pl --tcr $IN/$CURRFILE --refdb=$DB
